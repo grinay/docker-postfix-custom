@@ -72,7 +72,7 @@ mail_owner = postfix
 # from gethostname(). $myhostname is used as a default value for many
 # other configuration parameters.
 #
-#myhostname = host.domain.tld
+myhostname = mail.arkstars.com
 #myhostname = virtual.domain.tld
 
 # The mydomain parameter specifies the local internet domain name.
@@ -80,7 +80,7 @@ mail_owner = postfix
 # $mydomain is used as a default value for many other configuration
 # parameters.
 #
-#mydomain = domain.tld
+mydomain = arkstars.com
 
 # SENDING MAIL
 # 
@@ -110,10 +110,10 @@ mail_owner = postfix
 #
 # Note: you need to stop/start Postfix when this parameter changes.
 #
-#inet_interfaces = all
+inet_interfaces = all
 #inet_interfaces = $myhostname
 #inet_interfaces = $myhostname, localhost
-inet_interfaces = localhost
+#inet_interfaces = localhost
 
 # Enable IPv4, and IPv6 if supported
 inet_protocols = all
@@ -161,8 +161,8 @@ inet_protocols = all
 #
 # See also below, section "REJECTING MAIL FOR UNKNOWN LOCAL USERS".
 #
-mydestination = $myhostname, localhost.$mydomain, localhost
-#mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+#mydestination = $myhostname, localhost.$mydomain, localhost
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 #mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain,
 #	mail.$mydomain, www.$mydomain, ftp.$mydomain
 
@@ -218,7 +218,7 @@ mydestination = $myhostname, localhost.$mydomain, localhost
 # with 450 (try again later) until you are certain that your
 # local_recipient_maps settings are OK.
 #
-unknown_local_recipient_reject_code = 550
+unknown_local_recipient_reject_code = 450
 
 # TRUST AND RELAY CONTROL
 
@@ -293,8 +293,10 @@ mynetworks =
 # list this system as their primary or backup MX host. See the
 # permit_mx_backup restriction description in postconf(5).
 #
-relay_domains = kitpages.fr
+relay_domains = arkstars.com
 
+luser_relay = admin@arkstars.com (or local system user)
+local_recipient_maps =
 # DEBUGGING CONTROL
 #
 # The debug_peer_level parameter specifies the increment in verbose
